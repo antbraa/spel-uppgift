@@ -3,14 +3,17 @@ extends KinematicBody2D
 const UP = Vector2(0, -1)
 const GRAVITY = 20
 const MAXFALLSPEED = 200
-const MAXSPEED = 80
-const JUMPFORCE = 300
+const MAXSPEED = 100
+const JUMPFORCE = 350
 const ACCEL = 10
 
 
 
 var motion = Vector2()
 var facing_right = true
+var is_dead = false
+
+var explosion_scene = preload("res://Scenes/Explosion.tscn")
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -32,24 +35,44 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("right"):
 		motion.x += ACCEL
 		facing_right = true
-		$AnimationPlayer.play("Running")
+		if not is_dead:
+			$AnimationPlayer.play("Running")
 	elif Input.is_action_pressed("left"):
 		motion.x -= ACCEL
 		facing_right = false
-		$AnimationPlayer.play("Running")
+		if not is_dead:
+			$AnimationPlayer.play("Running")
 	else:
 		motion.x = lerp(motion.x,0,0.2)
-		$AnimationPlayer.play("Idle")
-		
+		if not is_dead:
+			$AnimationPlayer.play("Idle")
+			
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
-			motion.y = -JUMPFORCE
+				motion.y = -JUMPFORCE
 			
 	if !is_on_floor():
 		if motion.y < 0:
-			$AnimationPlayer.play("jump")
+			if not is_dead:
+				$AnimationPlayer.play("jump")
 		elif motion.y > 0:
-			$AnimationPlayer.play("fall")
+			if not is_dead:
+				$AnimationPlayer.play("fall")
 	
 	motion = move_and_slide(motion,UP)
+	
+	
+func die():
+	print("DEAD")
+	is_dead = true
+	$AnimationPlayer.play("Die")
+	_spawn_explosion()
+	#OS.alert('You died', 'Game Over')
+
+
+func _spawn_explosion():
+	var explosion = explosion_scene.instance()
+	explosion.global_position = global_position
+	get_tree().get_root().add_child(explosion)
+
 

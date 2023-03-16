@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://parallax/landscape_0000_1_trees.png" type="Texture" id=1]
+[ext_resource path="res://parallax/landscape_0003_4_mountain.png" type="Texture" id=2]
+[ext_resource path="res://parallax/landscape_0005_6_background.png" type="Texture" id=3]
+[ext_resource path="res://parallax/landscape_0001_2_trees.png" type="Texture" id=4]
+[ext_resource path="res://parallax/landscape_0002_3_trees.png" type="Texture" id=5]
+[ext_resource path="res://parallax/landscape_0004_5_clouds.png" type="Texture" id=6]
+
+[node name="ParallaxBackground2" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 768, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer"]
+scale = Vector2( 0.42, 1.48 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 768, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer2"]
+scale = Vector2( 0.42, 1.48 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 768, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer3"]
+scale = Vector2( 0.42, 1.48 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 768, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer4"]
+scale = Vector2( 0.42, 1.48 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 768, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer5"]
+scale = Vector2( 0.42, 1.48 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 768, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer6"]
+scale = Vector2( 0.42, 1.7 )
+texture = ExtResource( 1 )
+centered = false
