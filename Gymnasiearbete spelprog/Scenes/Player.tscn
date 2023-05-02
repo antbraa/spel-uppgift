@@ -125,3 +125,10 @@ anims/jump = SubResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="Label" type="Label" parent="Camera2D"]
+margin_left = -370.0
+margin_top = -210.0
+margin_right = -323.0
+margin_bottom = -196.0
+text = "Score : "
